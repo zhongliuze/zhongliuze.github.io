@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Hexo与Github完美结合搭建个人博客详细教程"/>
+
+
+
+
+  <meta name="keywords" content="Hexo,Github,Git," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="s0ok">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/cjbhmas1o0004k4a4i97vqpp8/"/>
+
+
+<meta name="description" content="上次说到要讲解下如何搭建我的个人博客的，今天就抽空写一个完整版的。首先介绍下博客需要用的技术和框架支持分别是：Node.js、Hexo、Git、Github。下面就开始讲解如何搭建Hexo静态博客系统。">
+<meta name="keywords" content="Hexo,Github,Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo与Github完美结合搭建个人博客详细教程">
+<meta property="og:url" content="http://yoursite.com/cjbhmas1o0004k4a4i97vqpp8/index.html">
+<meta property="og:site_name" content="s0ok">
+<meta property="og:description" content="上次说到要讲解下如何搭建我的个人博客的，今天就抽空写一个完整版的。首先介绍下博客需要用的技术和框架支持分别是：Node.js、Hexo、Git、Github。下面就开始讲解如何搭建Hexo静态博客系统。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/001.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/002.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/003.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/004.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/005.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/006.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/007.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/008.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/009.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/010.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/011.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/012.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/013.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/014.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/015.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/016.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/017.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/018.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/019.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/020.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/021.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/022.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017/06/12/023.jpg">
+<meta property="og:updated_time" content="2017-06-13T04:04:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo与Github完美结合搭建个人博客详细教程">
+<meta name="twitter:description" content="上次说到要讲解下如何搭建我的个人博客的，今天就抽空写一个完整版的。首先介绍下博客需要用的技术和框架支持分别是：Node.js、Hexo、Git、Github。下面就开始讲解如何搭建Hexo静态博客系统。">
+<meta name="twitter:image" content="http://yoursite.com/images/2017/06/12/001.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css" />
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Hexo与Github完美结合搭建个人博客详细教程 - s0ok </title>
+  </head>
+
+  <body>
+    <div id="page">
+      
+      <section id="post-header">&nbsp;</section>
+      <section id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Hexo与Github完美结合搭建个人博客详细教程
+        
+      </h1>
+
+      <time class="post-time">
+          2017-06-12
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>上次说到要讲解下如何搭建我的个人博客的，今天就抽空写一个完整版的。首先介绍下博客需要用的技术和框架支持分别是：Node.js、Hexo、Git、Github。下面就开始讲解如何搭建Hexo静态博客系统。<br><a id="more"></a></p>
+<h3 id="安装部署Node-js"><a href="#安装部署Node-js" class="headerlink" title="安装部署Node.js"></a>安装部署Node.js</h3><p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。<br>Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。<br>Node.js 的包管理器 npm，是全球最大的开源库生态系统。 </p>
+<h4 id="下载Node-js"><a href="#下载Node-js" class="headerlink" title="下载Node.js"></a>下载Node.js</h4><ul>
+<li><a href="http://www.nodejs.org/" title="Node.js官网" target="_blank" rel="external">Node.js官网</a></li>
+<li><a href="http://www.nodejs.cn/" title="Node.js中文官网" target="_blank" rel="external">Node.js中文官网</a></li>
+<li><a href="http://nodejs.cn/download/" title="Node.js官网下载网址" target="_blank" rel="external">Node.js官网下载网址</a></li>
+<li><a href="https://npm.taobao.org/mirrors/node/v8.0.0/node-v8.0.0-x86.msi" title="Node.js国内镜像Windows 32位下载" target="_blank" rel="external">Node.js国内镜像Windows 32位下载</a></li>
+<li><a href="https://npm.taobao.org/mirrors/node/v8.0.0/node-v8.0.0-x64.msi" title="Node.js国内镜像Windows 64位下载（推荐）" target="_blank" rel="external">Node.js国内镜像Windows 64位下载（推荐）</a></li>
+<li><a href="https://npm.taobao.org/mirrors/node/v8.0.0/node-v8.0.0.pkg" title="Node.js国内镜像Mac 64位下载" target="_blank" rel="external">Node.js国内镜像MAC 64位下载</a>  </li>
+</ul>
+<h4 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h4><p>下载的msi文件可直接安装，双击程序启动安装安装界面如图1.1所示。  </p>
+<center><img src="/images/2017/06/12/001.jpg" alt="&#39;Node.js安装界面图&#39;"></center><br><center><font size="2">图1.1 Node.js安装界面图</font></center><br>因为系统安装都是默认设置，所以勾选同意后，一直点击 <code>Next</code> 就可以了。安装完成后点击 <code>Finish</code> 关闭安装窗口。<br>#### 测试安装结果 ####<br>为了检查Node.js是否成功安装，我们需要 <code>Win+R</code> 打开命令工具输入 <code>cmd</code> 打开系统命令行窗口。<br>在命令行中输入<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node -v  </div><div class="line">npm -v</div></pre></td></tr></table></figure>若提示<strong>不是内部或外部命令，也不是可运行的程序或批处理文件</strong>则表示安装失败，需要重新检查一下自己安装的过程。正确的回显如图1.2所示。<br><br><center><img src="/images/2017/06/12/002.jpg" alt="&#39;Node.js成功安装测试回显&#39;"></center><br><center><font size="2">图1.2 Node.js成功安装测试回显</font></center>  
+
+<h3 id="安装部署Git"><a href="#安装部署Git" class="headerlink" title="安装部署Git"></a>安装部署Git</h3><p>Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p>
+<h4 id="下载Git"><a href="#下载Git" class="headerlink" title="下载Git"></a>下载Git</h4><ul>
+<li><a href="http://www.git-scm.com/" title="Git官网" target="_blank" rel="external">Git官网</a></li>
+<li><a href="http://dlsw.baidu.com/sw-search-sp/soft/4e/30195/Git-2.7.2-32-bit_setup.1457942412.exe" title="Git国内镜像Windows 32位" target="_blank" rel="external">Git国内镜像Windows 32位</a></li>
+<li><a href="http://dlsw.baidu.com/sw-search-sp/soft/e7/40642/Git-2.7.2-64-bit_setup.1457942968.exe" title="Git国内镜像Windows 64位" target="_blank" rel="external">Git国内镜像Windows 64位</a></li>
+</ul>
+<h4 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h4><p>下载完成后打开安装程序，同Node.js一样，均使用默认设置，所以点击 <code>Next</code> 到完成后点击 <code>Finish</code> 关闭安装窗口，启动安装图如下2.1所示。  </p>
+<center><img src="/images/2017/06/12/003.jpg" alt="&#39;Git安装界面图&#39;"></center><br><center><font size="2">图2.1 Git安装界面图</font></center>  
+
+<h4 id="测试安装结果"><a href="#测试安装结果" class="headerlink" title="测试安装结果"></a>测试安装结果</h4><p>检查Git是否成功安装，在桌面空白处右键会发现有 <code>Git Bash Here</code> 选项，点击启动Git命令行，输入命令<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git --version</div></pre></td></tr></table></figure>若成功安装，系统会回显git的版本号，如图2.2所示。  </p>
+<center><img src="/images/2017/06/12/004.jpg" alt="&#39;Git成功安装回显图&#39;"></center><br><center><font size="2">图2.2 Git成功安装回显图</font></center>  
+
+<p>接下来我们测试下Git的环境变量是否也成功配置，我们打开cmd命令行，同样输入上面的命令，若提示<strong>git不是内部或外部命令，也不是可运行的程序或批处理文件</strong>则环境变量未配置成功。<br>解决方法：右键我的电脑-&gt;属性-&gt;高级系统设置-&gt;环境变量-&gt;系统变量中找到Path变量，双击编辑。在最后粘贴Git安装路径中bin文件夹的路径，如 <code>;D:\Program Files\Git\bin;</code> 然后确定保存修改，如图2.3所示。  </p>
+<center><img src="/images/2017/06/12/005.jpg" alt="&#39;设置Git环境变量&#39;"></center><br><center><font size="2">图2.3 设置Git环境变量</font></center>  
+
+<p>接着关闭cmd命令窗口，重新打开，再次输入命令，若显示Git的版本信息则环境变量配置成功。  </p>
+<h3 id="Github账户创建与配置"><a href="#Github账户创建与配置" class="headerlink" title="Github账户创建与配置"></a>Github账户创建与配置</h3><ul>
+<li><a href="https://github.com/" title="Github官网" target="_blank" rel="external">Github官网</a></li>
+<li><a href="https://github.com/join?source=header-home" title="注册Github" target="_blank" rel="external">注册Github</a></li>
+<li><a href="https://github.com/login" title="登录Github" target="_blank" rel="external">登录Github</a>  </li>
+</ul>
+<h4 id="创建代码库"><a href="#创建代码库" class="headerlink" title="创建代码库"></a>创建代码库</h4><p>成功登陆后，点击页面右上角的+号，选择 <code>New repository</code> 进入新建代码库页面。如图3.1所示。 </p>
+<center><img src="/images/2017/06/12/006.jpg" alt="&#39;创建代码库&#39;"></center><br><center><font size="2">图3.1 创建代码库</font></center>  
+
+<p>在Repository name下填写yourname.github.io，Description (optional)下填写一些简单的描述（不写也没有关系），如图所示<br>yourname是指的你github名称，比如我的github名叫liuzezhong,那么Repository name下填写的应该是liuzezhong.github.io  </p>
+<center><img src="/images/2017/06/12/007.jpg" alt="&#39;输入代码库名&#39;"></center><br><center><font size="2">图3.2 输入代码库名</font></center>  
+
+<h4 id="代码库设置"><a href="#代码库设置" class="headerlink" title="代码库设置"></a>代码库设置</h4><p>创建成功后会显示图3.3所示的的页面。  </p>
+<center><img src="/images/2017/06/12/008.jpg" alt="&#39;创建成功&#39;"></center><br><center><font size="2">图3.3 创建成功</font></center>  
+
+<p>接下来我们要开启Gihub-Page功能,点击导航栏的 <code>Settings</code> 按钮，进入代码库设置页面，找到 <code>Github Page</code> 模块。如图3.4所示。  </p>
+<center><img src="/images/2017/06/12/009.jpg" alt="&#39;Gihub-Page&#39;"></center><br><center><font size="2">图3.4 Gihub-Page</font></center> 
+
+<p>点击 <code>Choose a theme</code> 按钮，随意选择一个Page模版，点击 <code>Commit changes</code> 保存即可。  </p>
+<center><img src="/images/2017/06/12/010.jpg" alt="&#39;选择模版&#39;"></center><br><center><font size="2">图3.5 选择模版</font></center>  
+
+<p>这时，在浏览器中输入yourname.github.io就可以看到一个独立的页面出来，如图3.6所示。如果没有，需要回头检查下自己的配置是否出错。  </p>
+<center><img src="/images/2017/06/12/011.jpg" alt="&#39;独立页面&#39;"></center><br><center><font size="2">图3.6 独立页面</font></center>  
+
+<h4 id="将Git连接到Github"><a href="#将Git连接到Github" class="headerlink" title="将Git连接到Github"></a>将Git连接到Github</h4><p>首先打开Git Bash命令窗口，输入命令绑定Github的账户：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name "liuzezhong"</div><div class="line">$ git config --global user.email zhongliuze@gmail.com</div></pre></td></tr></table></figure>接着输入命令生成密钥：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C "zhongliuze@gmail.com"</div></pre></td></tr></table></figure>会提示输入密钥保存路径，直接按Enter键默认路径即可。生成成功后打开默认密钥保存的位置，我的是 <code>C:\Users\liuzezhong\.ssh</code> ，<code>id_rsa.pub</code> 里面保存的就是我们需要的密钥，如图3.7所示。  </p>
+<center><img src="/images/2017/06/12/012.jpg" alt="&#39;密钥保存位置&#39;"></center><br><center><font size="2">图3.7 密钥保存位置</font></center>  
+
+<p>打开Github的设置页面。进入 <code>SSH and GPG keys</code> 页面，单击 <code>New SSH key</code> 按钮，随意取个名字如“liuzezhong-PC”,然后将 <code>id_rsa.pub</code> 内容完全粘贴至key的输入框内，点击 <code>Add SHH key</code> 保存。  </p>
+<center><img src="/images/2017/06/12/013.jpg" alt="&#39;密钥保存位置&#39;"></center><br><center><font size="2">图3.8 输入密钥</font></center>  
+
+<p>保存成功后，回到git bash命令行，输入<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh git@github.com</div></pre></td></tr></table></figure>检测是否成功链接github<br>正常情况回显如下图所示：  </p>
+<center><img src="/images/2017/06/12/014.jpg" alt="&#39;密钥保存位置&#39;"></center><br><center><font size="2">图3.9 输入密钥</font></center>  
+
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><h4 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h4><p>在合适的地方建一个文件夹，比如 <code>D:\Program Files (x86)\Hexo</code> ，用cmd命令行窗口进入该目录，在命令行中输入：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div></pre></td></tr></table></figure>如图4.1所示，安装时间可能会比较久，耐心等待。  </p>
+<center><img src="/images/2017/06/12/015.jpg" alt="&#39;安装Hexo&#39;"></center><br><center><font size="2">图4.1 安装hexo</font></center>  
+
+
+<p>安装完成后接着输入命令：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo --save</div></pre></td></tr></table></figure>如图4.2所示。安装过程会出现一些Warning报错，不过没关系，不影响，直接忽略即可。  </p>
+<center><img src="/images/2017/06/12/016.jpg" alt="&#39;保存安装Hexo的配置&#39;"></center><br><center><font size="2">图4.2 保存安装Hexo的配置</font></center>  
+
+<p>安装完成后继续输入命令：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo -v</div></pre></td></tr></table></figure>检测是否安装成功，若安装成功回显应如图4.3所示。  </p>
+<center><img src="/images/2017/06/12/017.jpg" alt="&#39;检测是否安装成功&#39;"></center><br><center><font size="2">图4.3 检测是否安装成功</font></center>  
+
+<h4 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h4><p>在适合的地方新建一个文件夹，存放博客文件，如 <code>E:\myblog</code> ，用 <code>cmd</code> 命令行进入该目录，<br>输入命令：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>会加载hexo组建，如图4.4所示，你会发现myblog目录下会多了许多文件和文件夹，这些都是hexo博客文件。  </p>
+<center><img src="/images/2017/06/12/018.jpg" alt="&#39;生成博客文件&#39;"></center><br><center><font size="2">图4.4 生成博客文件</font></center>  
+
+<p>模块安装完成后需要安装hexo依赖的一些组件，输入命令：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo install</div></pre></td></tr></table></figure>完成后接着输入命令部署hexo，如图4.5所示。<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo g</div></pre></td></tr></table></figure>  </p>
+<center><img src="/images/2017/06/12/019.jpg" alt="&#39;部署hexo&#39;"></center><br><center><font size="2">图4.5 部署hexo</font></center>  
+
+<p>接着输入命令打开hexo服务：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s</div></pre></td></tr></table></figure>如图4.6所示。  </p>
+<center><img src="/images/2017/06/12/020.jpg" alt="&#39;打开hexo服务&#39;"></center><br><center><font size="2">图4.6 打开hexo服务</font></center>  
+
+
+<p>打开 <code>http://localhost:4000/</code>，若页面显示如下，则代表hexo安装部署成功。</p>
+<center><img src="/images/2017/06/12/021.jpg" alt="&#39;部署成功页面&#39;"></center><br><center><font size="2">图4.7 部署成功页面</font></center>  
+
+<h4 id="Hexo连接Github-Page"><a href="#Hexo连接Github-Page" class="headerlink" title="Hexo连接Github Page"></a>Hexo连接Github Page</h4><p>在 <code>myblog</code> 目录下，有一个 <code>_config.yml</code> 文件，打开找到 <code>Deployment</code> 作如下修改（将github名字修改成你自己的名字）：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">deploy:</span></div><div class="line"><span class="function">  <span class="title">type</span>: <span class="title">git</span></span></div><div class="line"><span class="function">  <span class="title">repo</span>: <span class="title">git</span>@<span class="title">github.com:liuzezhong</span>/<span class="title">liuzezhong.github.io.git</span></span></div><div class="line"><span class="function">  <span class="title">branch</span>: <span class="title">master</span></span></div></pre></td></tr></table></figure>到此，搭建hexo博客的相关环境配置已经全部配置完成。  </p>
+<h3 id="Hexo使用"><a href="#Hexo使用" class="headerlink" title="Hexo使用"></a>Hexo使用</h3><p>由于Hexo是使用Markdown语法编写的静态页面，所以每次更新博客的时候需要在电脑上先用Markdown语法写好，再用命令编译生成静态页面，最后提交到github page中显示。所以下面介绍下Hexo的使用及常用的命令。  </p>
+<p>新建一篇文章，执行下面的命令：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new post "article <span class="built_in">title</span>"</div></pre></td></tr></table></figure></p>
+<center><img src="/images/2017/06/12/022.jpg" alt="&#39;新建文章&#39;"></center><br><center><font size="2">图5.1 新建文章</font></center>  
+
+<p>这时在我的电脑目录下 <code>E:\blog\source\_posts</code> 将看到 <code>Hexo与Github完美结合搭建个人博客详细教程.md</code> 文件，用MarDown编辑器打开就可以编辑文章了。文章编辑好之后，运行生成、部署命令：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g   // 生成</div><div class="line">hexo d   // 部署</div></pre></td></tr></table></figure><br>当然你也可以执行下面的命令，相当于上面两条命令的效果<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d -g #在部署前先生成</div></pre></td></tr></table></figure>  </p>
+<center><img src="/images/2017/06/12/023.jpg" alt="&#39;部署生成&#39;"></center><br><center><font size="2">图5.2 部署生成</font></center>  
+
+
+<p>部署成功后访问你的Github Page地址,如 <code>https://liuzezhong.github.io</code> 将可以看到生成的文章。  </p>
+<h3 id="Hexo主题"><a href="#Hexo主题" class="headerlink" title="Hexo主题"></a>Hexo主题</h3><p>hexo有许多优美的主题，每个不同的主题会需要不同的配置，主题配置文件在主题目录下的<code>_config.yml</code> 。<br><a href="https://hexo.io/themes/" target="_blank" rel="external">点此挑选hexo的主题</a>  </p>
+<p>我的网站的主题是Next，简洁美观。目前Github上Star最高的Hexo主题，支持几种不同的风格，提供了非常完善的配置说明。</p>
+<p>详细的主题配置请参考<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">《Next主题的官方文档》</a>  </p>
+<p>由于使用Markdown语法写博客，推荐使用MarkdownPad2编辑器，非常好用。<br><a href="https://eyun.baidu.com/s/3mi4w4E8" title="密码：E9Ar" target="_blank" rel="external">MarkdownPad2免费破解版</a><br>提取密码：<code>E9Ar</code></p>
+
+            </div>
+          
+  </article>
+
+    </div>
+
+      </section>
+
+      <footer id="colophon"><span class="copyright-year">
+    <a class="theme-link" href="javascript:history.back(-1)">gluttony greed sloth pride lust anger jealousy</a>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+  
+    <script type="text/javascript" src="/lib/typed/typed.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

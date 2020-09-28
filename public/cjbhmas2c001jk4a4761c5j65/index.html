@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="微信小程序开发setData笔记“"/>
+
+
+
+
+  <meta name="keywords" content="小程序,bug," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="s0ok">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/cjbhmas2c001jk4a4761c5j65/"/>
+
+
+<meta name="description" content="最近加入了新的公司，目前业务是做一款小程序出来。对老夫来说可谓是从零开始，不过还好，老夫天赋极高，花了半天看了下微信小程序的官方文档，下载了官方的开发工具，就是他娘的干！">
+<meta name="keywords" content="小程序,bug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序开发setData笔记“">
+<meta property="og:url" content="http://yoursite.com/cjbhmas2c001jk4a4761c5j65/index.html">
+<meta property="og:site_name" content="s0ok">
+<meta property="og:description" content="最近加入了新的公司，目前业务是做一款小程序出来。对老夫来说可谓是从零开始，不过还好，老夫天赋极高，花了半天看了下微信小程序的官方文档，下载了官方的开发工具，就是他娘的干！">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-08T07:09:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序开发setData笔记“">
+<meta name="twitter:description" content="最近加入了新的公司，目前业务是做一款小程序出来。对老夫来说可谓是从零开始，不过还好，老夫天赋极高，花了半天看了下微信小程序的官方文档，下载了官方的开发工具，就是他娘的干！">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css" />
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 微信小程序开发setData笔记“ - s0ok </title>
+  </head>
+
+  <body>
+    <div id="page">
+      
+      <section id="post-header">&nbsp;</section>
+      <section id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          微信小程序开发setData笔记“
+        
+      </h1>
+
+      <time class="post-time">
+          2017-07-08
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>最近加入了新的公司，目前业务是做一款小程序出来。对老夫来说可谓是从零开始，不过还好，老夫天赋极高，花了半天看了下微信小程序的<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/index.html" target="_blank" rel="external">官方文档</a>，下载了官方的<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html" target="_blank" rel="external">开发工具</a>，就是他娘的干！<br><a id="more"></a><br>这里废话不多讲，基础知识看微信小程序的官方文档就可以了，这里我要讲的是使用setData函数的时候遇到的一个坑。  </p>
+<blockquote>
+<p>Page() 函数用来注册一个页面。接受一个 object 参数，其指定页面的初始数据、生命周期函数、事件处理函数等。  </p>
+</blockquote>
+<p>在注册好程序后，我们需要注册各个页面，也就是Page，Page有个属性是data，类型为Object，是页面数据存储或初始数据存储的地方。（Page实际是一个对象数组，data是其一个子集，它可以有任意个不同名字的子集，在页面函数中用 <code>this</code> 可以访问）  </p>
+<p>初始化数据（data）将作为页面的第一次渲染。data 将会以 JSON 的形式由逻辑层传至渲染层，所以其数据必须是可以转成 JSON 的格式：字符串，数字，布尔值，对象，数组。  </p>
+<p>渲染层可以通过 WXML 对数据进行绑定。  </p>
+<p><strong>示例代码：</strong>  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></div></pre></td></tr></table></figure>  
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Page(&#123;</div><div class="line">  data: &#123;</div><div class="line">    text: <span class="string">'init data'</span>,</div><div class="line">    array: [&#123;<span class="attr">msg</span>: <span class="string">'1'</span>&#125;, &#123;<span class="attr">msg</span>: <span class="string">'2'</span>&#125;]</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>  
+<p>那么作为初始数据，就肯定是写死的，如果我需要改变初始数据或者从服务器取得数据如何重新载入到页面中呢？这个时候就用到了Page.prototype.setData()函数。<code>setData</code> 函数用于将数据从逻辑层发送到视图层，同时改变对应的 <code>this.data</code> 的值。  </p>
+<p>setData() 参数格式：接受一个对象，以 key，value 的形式表示将 this.data 中的 key 对应的值改变成 value。其中 key 可以非常灵活，以数据路径的形式给出，如 array[2].message，a.b.c.d，并且不需要在 this.data 中预先定义。</p>
+<p><strong>注意：</strong>  </p>
+<ol>
+<li>直接修改 this.data 而不调用 this.setData 是无法改变页面的状态的，还会造成数据不一致。</li>
+<li>单次设置的数据不能超过1024kB，请尽量避免一次设置过多的数据。</li>
+</ol>
+<hr>
+<p>好了，上面恶补了一下基础知识，我遇到的问题是这样的，当在开发工具创建完成小程序后，会给一段示例代码，可以根据示例代码继续开发。  </p>
+<p><strong>app.js实例代码如下：</strong>  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//app.js</span></div><div class="line">App(&#123;</div><div class="line">  onLaunch: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//调用API从本地缓存中获取数据</span></div><div class="line">    <span class="keyword">var</span> logs = wx.getStorageSync(<span class="string">'logs'</span>) || []</div><div class="line">    logs.unshift(<span class="built_in">Date</span>.now())</div><div class="line">    wx.setStorageSync(<span class="string">'logs'</span>, logs)</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  getUserInfo: <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.globalData.userInfo) &#123;</div><div class="line">      <span class="keyword">typeof</span> cb == <span class="string">"function"</span> &amp;&amp; cb(<span class="keyword">this</span>.globalData.userInfo)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="comment">//调用登录接口</span></div><div class="line">      wx.getUserInfo(&#123;</div><div class="line">        withCredentials: <span class="literal">false</span>,</div><div class="line">        success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">          that.globalData.userInfo = res.userInfo</div><div class="line">          <span class="keyword">typeof</span> cb == <span class="string">"function"</span> &amp;&amp; cb(that.globalData.userInfo)</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  globalData: &#123;</div><div class="line">    userInfo: <span class="literal">null</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>  
+<p>仔细看官方文档不难识别出，这段代码是调用getUserInfo接口，登录用户获取用户信息并返回到data中。  </p>
+<p>由于需要，我在接口的success的方法中添加了request方法与服务器进行了一次Post请求，请求成功后打算把服务器返回的数据重写到data中，使用的就是setData方法，却他妈，怎么也写不进去，用的是官方的示例代码。  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">changeNum: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.data.num = <span class="number">1</span></div><div class="line">    <span class="keyword">this</span>.setData(&#123;</div><div class="line">      num: <span class="keyword">this</span>.data.num</div><div class="line">    &#125;)</div><div class="line">  &#125;,</div></pre></td></tr></table></figure>  
+<p>我他妈头都大了，试了一遍又一遍，单独测试，没毛病啊，为什么写到这个函数里面就set不进去Data呢？我又仔细读了一遍示例程序，注意到了app.js实例代码中有一句  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> that = <span class="keyword">this</span></div></pre></td></tr></table></figure>  
+<p>这代表什么意思呢？this代表的是当前对象，var that=this就是将当前的this对象复制一份到that变量中，this对象在程序中随时会改变，而var that=this之后，that没改变之前仍然是指向当时的this，这样就不会出现找不到原来的对象。</p>
+<p>所以在这段程序里，正确使用setData函数应该是：  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">that.setData(&#123;</div><div class="line">  num: <span class="keyword">this</span>.data.num</div><div class="line">&#125;)</div></pre></td></tr></table></figure>  
+<p>将this改为that之后，瞬间奏效~  </p>
+<p>老奴告退！</p>
+
+            </div>
+          
+  </article>
+
+    </div>
+
+      </section>
+
+      <footer id="colophon"><span class="copyright-year">
+    <a class="theme-link" href="javascript:history.back(-1)">gluttony greed sloth pride lust anger jealousy</a>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+  
+    <script type="text/javascript" src="/lib/typed/typed.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

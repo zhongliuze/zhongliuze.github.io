@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="微信小程序获取登录用户唯一标识openid"/>
+
+
+
+
+  <meta name="keywords" content="小程序,bug," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="s0ok">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/cjbho0lwg001lo2a4s62qrgsc/"/>
+
+
+<meta name="description" content="在微信小程序开发中，获取当前登录用户的信息是通过调用 wx.login 接口，然后调用 wx.getUserInfo(OBJECT) 方法获取。调用成功 success 方法返回参数有：    userInfo：用户信息对象，不包含 openid 等敏感信息   rawData：不包括敏感信息的原始数据字符串，用于计算签名   signature：使用 sha1( rawData + sessio">
+<meta name="keywords" content="小程序,bug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序获取登录用户唯一标识openid">
+<meta property="og:url" content="http://yoursite.com/cjbho0lwg001lo2a4s62qrgsc/index.html">
+<meta property="og:site_name" content="s0ok">
+<meta property="og:description" content="在微信小程序开发中，获取当前登录用户的信息是通过调用 wx.login 接口，然后调用 wx.getUserInfo(OBJECT) 方法获取。调用成功 success 方法返回参数有：    userInfo：用户信息对象，不包含 openid 等敏感信息   rawData：不包括敏感信息的原始数据字符串，用于计算签名   signature：使用 sha1( rawData + sessio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-08T17:08:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序获取登录用户唯一标识openid">
+<meta name="twitter:description" content="在微信小程序开发中，获取当前登录用户的信息是通过调用 wx.login 接口，然后调用 wx.getUserInfo(OBJECT) 方法获取。调用成功 success 方法返回参数有：    userInfo：用户信息对象，不包含 openid 等敏感信息   rawData：不包括敏感信息的原始数据字符串，用于计算签名   signature：使用 sha1( rawData + sessio">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css" />
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 微信小程序获取登录用户唯一标识openid - s0ok </title>
+  </head>
+
+  <body>
+    <div id="page">
+      
+      <section id="post-header">&nbsp;</section>
+      <section id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          微信小程序获取登录用户唯一标识openid
+        
+      </h1>
+
+      <time class="post-time">
+          2017-07-09
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>在微信小程序开发中，获取当前登录用户的信息是通过调用 <code>wx.login</code> 接口，然后调用 <code>wx.getUserInfo(OBJECT)</code> 方法获取。调用成功 <code>success</code> 方法返回参数有：  </p>
+<ul>
+<li><strong>userInfo</strong>：用户信息对象，不包含 <code>openid</code> 等敏感信息  </li>
+<li><strong>rawData</strong>：不包括敏感信息的原始数据字符串，用于计算签名  </li>
+<li><strong>signature</strong>：使用 <code>sha1( rawData + sessionkey )</code> 得到字符串，用于校验用户信息，参考文档 <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html" target="_blank" rel="external">signature</a>  </li>
+<li><strong>encryptedData</strong>：包括敏感数据在内的完整用户信息的加密数据，详细见<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html" target="_blank" rel="external">加密数据解密算法</a>  </li>
+<li><strong>iv</strong>：加密算法的初始向量，详细见<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html" target="_blank" rel="external">加密数据解密算法</a>  <a id="more"></a>
+</li>
+</ul>
+<p><strong>示例代码：</strong>  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义一个要发送的目标URL；</span></div><div class="line">$url = <span class="string">"https://www.xxx.com"</span>;</div><div class="line"><span class="comment">//定义传递的参数数组；</span></div><div class="line">$data[<span class="string">'aaa'</span>]=<span class="string">'aaaaa'</span>;</div><div class="line">$data[<span class="string">'bbb'</span>]=<span class="string">'bbbb'</span>;</div><div class="line"><span class="comment">//定义返回值接收变量；</span></div><div class="line">$httpstr = http($url, $data, <span class="string">'POST'</span>, array(<span class="string">"Content-type: text/html; charset=utf-8"</span>));</div></pre></td></tr></table></figure>  
+<p><code>encryptedData</code> 解密后为以下 <code>json</code> 结构，详见<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/signature.html" target="_blank" rel="external">加密数据解密算法</a>  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"openId"</span>: <span class="string">"OPENID"</span>,</div><div class="line">    <span class="string">"nickName"</span>: <span class="string">"NICKNAME"</span>,</div><div class="line">    <span class="string">"gender"</span>: GENDER,</div><div class="line">    <span class="string">"city"</span>: <span class="string">"CITY"</span>,</div><div class="line">    <span class="string">"province"</span>: <span class="string">"PROVINCE"</span>,</div><div class="line">    <span class="string">"country"</span>: <span class="string">"COUNTRY"</span>,</div><div class="line">    <span class="string">"avatarUrl"</span>: <span class="string">"AVATARURL"</span>,</div><div class="line">    <span class="string">"unionId"</span>: <span class="string">"UNIONID"</span>,</div><div class="line">    <span class="string">"watermark"</span>:</div><div class="line">    &#123;</div><div class="line">        <span class="string">"appid"</span>:<span class="string">"APPID"</span>,</div><div class="line">    <span class="string">"timestamp"</span>:TIMESTAMP</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  
+<blockquote>
+<p><strong>UnionID机制说明：</strong>  </p>
+<p>如果开发者拥有多个移动应用、网站应用、和公众帐号（包括小程序），可通过 <code>unionid</code> 来区分用户的唯一性，因为只要是同一个微信开放平台帐号下的移动应用、网站应用和公众帐号（包括小程序），用户的 <code>unionid</code> 是唯一的。换句话说，同一用户，对同一个微信开放平台下的不同应用，<code>unionid</code> 是相同的。  </p>
+</blockquote>
+<hr>
+<p>说了这么多的意思就是通过 <code>wx.getUserInfo(OBJECT)</code> 方法获取的数据只有用户名、头像地址、性别、城市等信息，就算用 <code>encryptedData</code> 解密后，得到的也只有 <code>unionID</code> 和 <code>appid</code>，<code>unionID</code> 的机制已经说明，没什么卵用。<code>appid</code> 是开发者自己持有的，没有什么意义。  </p>
+<p>那么到底用什么来确定用户的唯一性呢？ <code>openid</code>，如何获取呢？  </p>
+<p>让我们回到用户登录的时候，调用的是 <code>wx.login(OBJECT)</code>接口：  </p>
+<blockquote>
+<p>调用接口获取登录凭证（<code>code</code>）进而换取用户登录态信息，包括用户的唯一标识（<code>openid</code>） 及本次登录的 会话密钥（<code>session_key</code>）。用户数据的加解密通讯需要依赖会话密钥完成。  </p>
+</blockquote>
+<p>在调用成功后，也就是用户允许登录后，回调内容会带上 <code>code</code>（有效期五分钟），开发者可以将 <code>code</code> 发送到开发者服务器后台，再次调用 <code>API</code> 接口，将 <code>code</code> 换成 <code>openid</code> 和 <code>session_ke</code>y。  </p>
+<p>注意：<code>code</code> 换取 <code>session_key</code> 和 <code>openid</code> 的过程是调用HTTPS接口的过程，开发者服务器使用登录凭证 <code>code</code> 获取 <code>session_key</code> 和 <code>openid</code>。其中 <code>session_key</code> 是对用户数据进行加密签名的密钥。为了自身应用安全，<strong>session_key 不应该在网络上传输</strong>。  </p>
+<p>也就是说用 <code>code</code> 换取 <code>session_key</code> 和 <code>openid</code> 的过程不可在微信小程序端执行，而应放在开发者的服务器端调用完成，保证其安全性。  </p>
+<p>接口地址：  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https:<span class="comment">//api.weixin.qq.com/sns/jscode2session?appid=APPID&amp;secret=SECRET&amp;js_code=JSCODE&amp;grant_type=authorization_code</span></div></pre></td></tr></table></figure>  
+<p>请求的参数有：  </p>
+<ul>
+<li><strong>appid</strong>：小程序唯一标识  </li>
+<li><strong>secret</strong>：小程序的 app secret  </li>
+<li><strong>js_code</strong>：登录时获取的 code  </li>
+<li><strong>grant_type</strong>：填写为 authorization_code  </li>
+</ul>
+<p>返回的参数：  </p>
+<ul>
+<li><strong>openid</strong>：用户唯一标识  </li>
+<li><strong>session_key</strong>：会话密钥  </li>
+</ul>
+<p>返回说明：  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//正常返回的JSON数据包</span></div><div class="line">&#123;</div><div class="line">      <span class="string">"openid"</span>: <span class="string">"OPENID"</span>,</div><div class="line">      <span class="string">"session_key"</span>: <span class="string">"SESSIONKEY"</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//错误时返回JSON数据包(示例为Code无效)</span></div><div class="line">&#123;</div><div class="line">    <span class="string">"errcode"</span>: <span class="number">40029</span>,</div><div class="line">    <span class="string">"errmsg"</span>: <span class="string">"invalid code"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>  
+<hr>
+<p>微信小程序获取用户唯一标识 <code>openid</code> 代码示例：  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//调用登录接口</span></div><div class="line">      wx.login(&#123;</div><div class="line">        success: <span class="function"><span class="keyword">function</span> (<span class="params">res_code</span>) </span>&#123;</div><div class="line">          <span class="keyword">if</span> (res_code.code) &#123;</div><div class="line">            <span class="comment">//发起网络请求</span></div><div class="line">            <span class="built_in">console</span>.log(res_code);</div><div class="line">            wx.request(&#123;</div><div class="line">              url: <span class="string">'http://localhost/index.php?m=home&amp;c=login&amp;a=index'</span>,</div><div class="line">              data: &#123;</div><div class="line">                res_code:res_code.code,</div><div class="line">              &#125;,</div><div class="line">              header: &#123;</div><div class="line">                <span class="string">'content-type'</span>: <span class="string">'application/x-www-form-urlencoded'</span></div><div class="line">              &#125;,</div><div class="line">              method: <span class="string">'POST'</span>,</div><div class="line">              success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(res);</div><div class="line">              &#125;</div><div class="line">            &#125;)</div><div class="line"></div><div class="line">            wx.getUserInfo(&#123;</div><div class="line">              success: <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</div><div class="line">                that.globalData.userInfo = res.userInfo</div><div class="line">                <span class="keyword">typeof</span> cb == <span class="string">"function"</span> &amp;&amp; cb(that.globalData.userInfo)</div><div class="line">              &#125;</div><div class="line">            &#125;)</div><div class="line">          &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'获取用户登录态失败！'</span> + res.errMsg)</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;,</div></pre></td></tr></table></figure>  
+<p>服务端代码示例：  </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>($_POST) &#123;</div><div class="line">            $js_code = I(<span class="string">'post.res_code'</span>,<span class="string">''</span>,<span class="string">'trim,string'</span>);</div><div class="line">            $appid = C(<span class="string">'APP_ID'</span>);</div><div class="line">            $secret = C(<span class="string">'APP_SECRET'</span>);</div><div class="line">            $grant_type = C(<span class="string">'GRANT_TYPE'</span>);</div><div class="line">            $url = C(<span class="string">'POST_URL_WEIXIN'</span>);</div><div class="line">            <span class="comment">//定义传递的参数数组；</span></div><div class="line">            $data[<span class="string">'js_code'</span>] = $js_code;</div><div class="line">            $data[<span class="string">'appid'</span>] = $appid;</div><div class="line">            $data[<span class="string">'secret'</span>] = $secret;</div><div class="line">            $data[<span class="string">'grant_type'</span>] = $grant_type;</div><div class="line">            <span class="comment">//定义返回值接收变量；</span></div><div class="line">            $httpstr = D(<span class="string">'Common'</span>)-&gt;http($url, $data, <span class="string">'POST'</span>, <span class="keyword">array</span>(<span class="string">"Content-type: text/html; charset=utf-8"</span>));</div><div class="line">            <span class="keyword">$this</span>-&gt;ajaxReturn($httpstr);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>  
+
+            </div>
+          
+  </article>
+
+    </div>
+
+      </section>
+
+      <footer id="colophon"><span class="copyright-year">
+    <a class="theme-link" href="javascript:history.back(-1)">gluttony greed sloth pride lust anger jealousy</a>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+  
+    <script type="text/javascript" src="/lib/typed/typed.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

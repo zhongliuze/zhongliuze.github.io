@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="PHP通过CURL发送HTTP请求的封装函数"/>
+
+
+
+
+  <meta name="keywords" content="php,http,curl," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="s0ok">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/cjbhmas21000sk4a4q6o5il0q/"/>
+
+
+<meta name="description" content="这几天在项目中有个需求，在服务端调用接口并取得数据。实际是进行模拟http请求，通常在客户端进行请求很方便，直接ajax post就可以，在php后台，通常使用cURL方法。">
+<meta name="keywords" content="php,http,curl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP通过CURL发送HTTP请求的封装函数">
+<meta property="og:url" content="http://yoursite.com/cjbhmas21000sk4a4q6o5il0q/index.html">
+<meta property="og:site_name" content="s0ok">
+<meta property="og:description" content="这几天在项目中有个需求，在服务端调用接口并取得数据。实际是进行模拟http请求，通常在客户端进行请求很方便，直接ajax post就可以，在php后台，通常使用cURL方法。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-08T08:52:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP通过CURL发送HTTP请求的封装函数">
+<meta name="twitter:description" content="这几天在项目中有个需求，在服务端调用接口并取得数据。实际是进行模拟http请求，通常在客户端进行请求很方便，直接ajax post就可以，在php后台，通常使用cURL方法。">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css" />
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> PHP通过CURL发送HTTP请求的封装函数 - s0ok </title>
+  </head>
+
+  <body>
+    <div id="page">
+      
+      <section id="post-header">&nbsp;</section>
+      <section id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          PHP通过CURL发送HTTP请求的封装函数
+        
+      </h1>
+
+      <time class="post-time">
+          2017-07-08
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>这几天在项目中有个需求，在服务端调用接口并取得数据。实际是进行模拟http请求，通常在客户端进行请求很方便，直接ajax post就可以，在php后台，通常使用cURL方法。<br><a id="more"></a></p>
+<h3 id="cURL介绍"><a href="#cURL介绍" class="headerlink" title="cURL介绍"></a>cURL介绍</h3><p>cURL 是一个利用URL语法规定来传输文件和数据的工具，支持很多协议，如HTTP、FTP、TELNET等。PHP支持的由Daniel Stenberg创建的libcurl库允许你与各种的服务器使用各种类型的协议进行连接和通讯。  </p>
+<p>libcurl支持http、https、ftp、gopher、telnet、dict、file和ldap协议。libcurl同时也支持HTTPS认证、HTTP POST、HTTP PUT、 FTP 上传(这个也能通过PHP的FTP扩展完成)、HTTP 基于表单的上传、代理、cookies和用户名+密码的认证。  </p>
+<p>PHP中使用cURL实现Get和Post请求的方法。  </p>
+<h3 id="PHP-cURL函数列表"><a href="#PHP-cURL函数列表" class="headerlink" title="PHP cURL函数列表"></a>PHP cURL函数列表</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">curl_close()	<span class="comment">//关闭一个cURL会话</span></div><div class="line">curl_copy_handle()	<span class="comment">//复制一个cURL句柄和它的所有选项</span></div><div class="line">curl_errno()	<span class="comment">//返回最后一次的错误号</span></div><div class="line">curl_error()	<span class="comment">//返回一个保护当前会话最近一次错误的字符串</span></div><div class="line">curl_escape()	<span class="comment">//返回转义字符串，对给定的字符串进行URL编码</span></div><div class="line">curl_exec()	<span class="comment">//执行一个cURL会话</span></div><div class="line">curl_file_create()	<span class="comment">//创建一个CURLFile对象</span></div><div class="line">curl_getinfo()	<span class="comment">//获取一个cURL连接资源句柄的信息</span></div><div class="line">curl_init()	<span class="comment">//初始化一个cURL会话</span></div><div class="line">curl_multi_add_handle()	<span class="comment">//向curl批处理会话中添加单独的curl句柄</span></div><div class="line">curl_multi_close()	<span class="comment">//关闭一组cURL句柄</span></div><div class="line">curl_multi_exec()	<span class="comment">//运行当前cURL句柄的子连接</span></div><div class="line">curl_multi_getcontent()	<span class="comment">//如果设置了CURLOPT_RETURNTRANSFER，则返回获取的输出的文本流</span></div><div class="line">curl_multi_info_read()	<span class="comment">//获取当前解析的cURL的相关传输信息</span></div><div class="line">curl_multi_init()	<span class="comment">//返回一个新cURL批处理句柄</span></div><div class="line">curl_multi_remove_handle()	<span class="comment">//移除curl批处理句柄资源中的某个句柄资源</span></div><div class="line">curl_multi_select()	<span class="comment">//等待所有cURL批处理中的活动连接</span></div><div class="line">curl_multi_setopt()	<span class="comment">//设置一个批处理cURL传输选项</span></div><div class="line">curl_multi_strerror()	<span class="comment">//返回描述错误码的字符串文本</span></div><div class="line">curl_pause()	<span class="comment">//暂停及恢复连接</span></div><div class="line">curl_reset()	<span class="comment">//重置libcurl的会话句柄的所有选项</span></div><div class="line">curl_setopt_array()	<span class="comment">//为cURL传输会话批量设置选项</span></div><div class="line">curl_setopt()	<span class="comment">//设置一个cURL传输选项</span></div><div class="line">curl_share_close()	<span class="comment">//关闭cURL共享句柄</span></div><div class="line">curl_share_init()	<span class="comment">//初始化cURL共享句柄</span></div><div class="line">curl_share_setopt()	<span class="comment">//设置一个共享句柄的cURL传输选项</span></div><div class="line">curl_strerror()	<span class="comment">//返回错误代码的字符串描述</span></div><div class="line">curl_unescape()	<span class="comment">//解码URL编码后的字符串</span></div><div class="line">curl_version()	<span class="comment">//获取cURL版本信息</span></div></pre></td></tr></table></figure>  
+<h3 id="HTTP请求函数实现"><a href="#HTTP请求函数实现" class="headerlink" title="HTTP请求函数实现"></a>HTTP请求函数实现</h3><p>看到这么多函数，到底怎么用？怎么在服务端实现HTTP请求，前几天看到有人分享关于cURL的文章，在这里我也来分享一下我正在系统里用到的一个通过cURL来发送HTTP请求的函数。  </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 发送HTTP请求方法</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span>  string $url    请求URL</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span>  array  $params 请求参数</span></div><div class="line"><span class="comment"> * <span class="doctag">@param</span>  string $method 请求方法GET/POST</span></div><div class="line"><span class="comment"> * <span class="doctag">@return</span> array  $data   响应数据</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">http</span><span class="params">($url, $params, $method = <span class="string">'GET'</span>, $header = array<span class="params">()</span>, $multi = false)</span></span>&#123;</div><div class="line">    $opts = <span class="keyword">array</span>(</div><div class="line">            CURLOPT_TIMEOUT        =&gt; <span class="number">30</span>,</div><div class="line">            CURLOPT_RETURNTRANSFER =&gt; <span class="number">1</span>,</div><div class="line">            CURLOPT_SSL_VERIFYPEER =&gt; <span class="keyword">false</span>,</div><div class="line">            CURLOPT_SSL_VERIFYHOST =&gt; <span class="keyword">false</span>,</div><div class="line">            CURLOPT_HTTPHEADER     =&gt; $header</div><div class="line">    );</div><div class="line">    <span class="comment">/* 根据请求类型设置特定参数 */</span></div><div class="line">    <span class="keyword">switch</span>(strtoupper($method))&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'GET'</span>:</div><div class="line">            $opts[CURLOPT_URL] = $url . <span class="string">'?'</span> . http_build_query($params);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">'POST'</span>:</div><div class="line">            <span class="comment">//判断是否传输文件</span></div><div class="line">            $params = $multi ? $params : http_build_query($params);</div><div class="line">            $opts[CURLOPT_URL] = $url;</div><div class="line">            $opts[CURLOPT_POST] = <span class="number">1</span>;</div><div class="line">            $opts[CURLOPT_POSTFIELDS] = $params;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">'不支持的请求方式！'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/* 初始化并执行curl请求 */</span></div><div class="line">    $ch = curl_init();</div><div class="line">    curl_setopt_array($ch, $opts);</div><div class="line">    $data  = curl_exec($ch);</div><div class="line">    $error = curl_error($ch);</div><div class="line">    curl_close($ch);</div><div class="line">    <span class="keyword">if</span>($error) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">'请求发生错误：'</span> . $error);</div><div class="line">    <span class="keyword">return</span>  $data;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  
+<p>调用方法：  </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义一个要发送的目标URL；</span></div><div class="line">$url = <span class="string">"https://www.xxx.com"</span>;</div><div class="line"><span class="comment">//定义传递的参数数组；</span></div><div class="line">$data[<span class="string">'aaa'</span>]=<span class="string">'aaaaa'</span>;</div><div class="line">$data[<span class="string">'bbb'</span>]=<span class="string">'bbbb'</span>;</div><div class="line"><span class="comment">//定义返回值接收变量；</span></div><div class="line">$httpstr = http($url, $data, <span class="string">'POST'</span>, <span class="keyword">array</span>(<span class="string">"Content-type: text/html; charset=utf-8"</span>));</div></pre></td></tr></table></figure>  
+            </div>
+          
+  </article>
+
+    </div>
+
+      </section>
+
+      <footer id="colophon"><span class="copyright-year">
+    <a class="theme-link" href="javascript:history.back(-1)">gluttony greed sloth pride lust anger jealousy</a>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+  
+    <script type="text/javascript" src="/lib/typed/typed.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

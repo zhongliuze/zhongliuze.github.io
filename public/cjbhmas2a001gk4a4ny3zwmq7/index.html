@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="微信小程序之request本地服务器测试"/>
+
+
+
+
+  <meta name="keywords" content="小程序," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="s0ok">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/cjbhmas2a001gk4a4ny3zwmq7/"/>
+
+
+<meta name="description" content="在微信小程序里，与后台服务器交互称之为发起请求，封装接口函数是wx.request，官方文档介绍点此。">
+<meta name="keywords" content="小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序之request本地服务器测试">
+<meta property="og:url" content="http://yoursite.com/cjbhmas2a001gk4a4ny3zwmq7/index.html">
+<meta property="og:site_name" content="s0ok">
+<meta property="og:description" content="在微信小程序里，与后台服务器交互称之为发起请求，封装接口函数是wx.request，官方文档介绍点此。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/2017/07/08/001.jpg">
+<meta property="og:updated_time" content="2017-07-08T07:36:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序之request本地服务器测试">
+<meta name="twitter:description" content="在微信小程序里，与后台服务器交互称之为发起请求，封装接口函数是wx.request，官方文档介绍点此。">
+<meta name="twitter:image" content="http://yoursite.com/images/2017/07/08/001.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css" />
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 微信小程序之request本地服务器测试 - s0ok </title>
+  </head>
+
+  <body>
+    <div id="page">
+      
+      <section id="post-header">&nbsp;</section>
+      <section id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          微信小程序之request本地服务器测试
+        
+      </h1>
+
+      <time class="post-time">
+          2017-07-08
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>在微信小程序里，与后台服务器交互称之为发起请求，封装接口函数是wx.request，<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html" target="_blank" rel="external">官方文档介绍点此</a>。<br><a id="more"></a></p>
+<p>进行request的时候要加一系列参数，比如url、data、header、method，这些官方文档都有介绍，就不重复描述。 </p>
+<p><strong>贴一段示例代码： </strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">wx.request(&#123;</div><div class="line">  url: <span class="string">'test.php'</span>, <span class="comment">//仅为示例，并非真实的接口地址</span></div><div class="line">  data: &#123;</div><div class="line">     x: <span class="string">''</span> ,</div><div class="line">     y: <span class="string">''</span></div><div class="line">  &#125;,</div><div class="line">  header: &#123;</div><div class="line">      <span class="string">'content-type'</span>: <span class="string">'application/json'</span></div><div class="line">  &#125;,</div><div class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(res.data)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>  
+<p>这时候，哪怕在测试环境下进行request请求必须遵从几个条件：  </p>
+<ol>
+<li>客户端的 HTTPS TLS 版本为1.2，但 Android 的部分机型还未支持 TLS 1.2，所以请确保 HTTPS 服务器的 TLS 版本支持1.2及以下版本；  </li>
+<li>url 中不能有端口；  </li>
+<li>request 的默认超时时间和最大超时时间都是 60s；  </li>
+<li>request 的最大并发数是 5；  </li>
+<li>网络请求的 referer 是不可以设置的，格式固定为 <a href="https://servicewechat.com/{appid}/{version}/page-frame.html，其中" target="_blank" rel="external">https://servicewechat.com/{appid}/{version}/page-frame.html，其中</a> {appid} 为小程序的 appid，{version} 为小程序的版本号，版本号为 0 表示为开发版。  </li>
+</ol>
+<p>最重要的是第一点，要想进行request请求必须要在服务器配置https，配置https又需要注册各种证书，很是麻烦，难道就没有可以保证本地开发测试的方法吗？答案是有，但是官方文档上没有。  </p>
+<p><strong>方法1：</strong><br>回想一下，小程序是怎么检测到我们后台配置的地址的？从项目开始到结束，无非就是appid了，在创建项目的时候设置无appid，亲测可用。  </p>
+<p><strong>方法2：</strong><br>另一种方法是在编辑器中设置，勾选“开发环境不校验请求域名及TLS版本”，暂时不知道这个方法的弊端，不过能用就行，也不推荐使用该方法。  </p>
+<center><img src="/images/2017/07/08/001.jpg" alt="&#39;设置不校验&#39;"></center>  
+
+<p>老夫告退！</p>
+
+            </div>
+          
+  </article>
+
+    </div>
+
+      </section>
+
+      <footer id="colophon"><span class="copyright-year">
+    <a class="theme-link" href="javascript:history.back(-1)">gluttony greed sloth pride lust anger jealousy</a>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+  
+    <script type="text/javascript" src="/lib/typed/typed.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

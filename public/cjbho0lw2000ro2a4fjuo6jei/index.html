@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="ThinkPHP的IF标签比较两个变量时无效的问题"/>
+
+
+
+
+  <meta name="keywords" content="php,thinkphp," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="s0ok">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/cjbho0lw2000ro2a4fjuo6jei/"/>
+
+
+<meta name="description" content="问题描述在Thinkphp的模版语言中，用if可以进行判断，如：  12345&amp;lt;if condition=&quot;$array.value eq 1&quot;&amp;gt;	……&amp;lt;else /&amp;gt;	……&amp;lt;/if&amp;gt;   在开发过程中，会从控制器传递多个参数到前端模版，并进行比较，如：   12345&amp;lt;if condition=&quot;$array.value eq $list.value&quot;&amp;">
+<meta name="keywords" content="php,thinkphp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ThinkPHP的IF标签比较两个变量时无效的问题">
+<meta property="og:url" content="http://yoursite.com/cjbho0lw2000ro2a4fjuo6jei/index.html">
+<meta property="og:site_name" content="s0ok">
+<meta property="og:description" content="问题描述在Thinkphp的模版语言中，用if可以进行判断，如：  12345&amp;lt;if condition=&quot;$array.value eq 1&quot;&amp;gt;	……&amp;lt;else /&amp;gt;	……&amp;lt;/if&amp;gt;   在开发过程中，会从控制器传递多个参数到前端模版，并进行比较，如：   12345&amp;lt;if condition=&quot;$array.value eq $list.value&quot;&amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-15T15:28:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ThinkPHP的IF标签比较两个变量时无效的问题">
+<meta name="twitter:description" content="问题描述在Thinkphp的模版语言中，用if可以进行判断，如：  12345&amp;lt;if condition=&quot;$array.value eq 1&quot;&amp;gt;	……&amp;lt;else /&amp;gt;	……&amp;lt;/if&amp;gt;   在开发过程中，会从控制器传递多个参数到前端模版，并进行比较，如：   12345&amp;lt;if condition=&quot;$array.value eq $list.value&quot;&amp;">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css" />
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> ThinkPHP的IF标签比较两个变量时无效的问题 - s0ok </title>
+  </head>
+
+  <body>
+    <div id="page">
+      
+      <section id="post-header">&nbsp;</section>
+      <section id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          ThinkPHP的IF标签比较两个变量时无效的问题
+        
+      </h1>
+
+      <time class="post-time">
+          2017-07-15
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在Thinkphp的模版语言中，用if可以进行判断，如： </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">if</span> condition=<span class="string">"$array.value eq 1"</span>&gt;</div><div class="line">	……</div><div class="line">&lt;<span class="keyword">else</span> /&gt;</div><div class="line">	……</div><div class="line">&lt;/<span class="keyword">if</span>&gt;</div></pre></td></tr></table></figure>  
+<p>在开发过程中，会从控制器传递多个参数到前端模版，并进行比较，如：  </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">if</span> condition=<span class="string">"$array.value eq $list.value"</span>&gt;</div><div class="line">	……</div><div class="line">&lt;<span class="keyword">else</span> /&gt;</div><div class="line">	……</div><div class="line">&lt;/<span class="keyword">if</span>&gt;</div></pre></td></tr></table></figure>  
+<p>这时发现，不管是否相等，程序都会执行 <code>else</code> 中的内容。<br><a id="more"></a></p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>查看thinkphp的<a href="http://doc.thinkphp.cn/manual/if.html" target="_blank" rel="external">官方文档</a>，也没有相关说明，只有示例：  </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">if</span> condition=<span class="string">"($name eq 1) OR ($name gt 100) "</span>&gt; value1</div><div class="line">&lt;<span class="keyword">elseif</span> condition=<span class="string">"$name eq 2"</span>/&gt;value2</div><div class="line">&lt;<span class="keyword">else</span> /&gt; value3</div><div class="line">&lt;/<span class="keyword">if</span>&gt;</div></pre></td></tr></table></figure>  
+<p>经过多次测试，发现只要改变变量的写法，将  </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$array.value</div></pre></td></tr></table></figure>  
+<p>改为：  </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$array[<span class="string">'value'</span>]</div></pre></td></tr></table></figure>  
+<p>就可成功进行正常的if比较。  </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">if</span> condition=<span class="string">"$array['value'] eq $list['value']"</span>&gt;</div><div class="line">	……</div><div class="line">&lt;<span class="keyword">else</span> /&gt;</div><div class="line">	……</div><div class="line">&lt;/<span class="keyword">if</span>&gt;</div></pre></td></tr></table></figure>  
+            </div>
+          
+  </article>
+
+    </div>
+
+      </section>
+
+      <footer id="colophon"><span class="copyright-year">
+    <a class="theme-link" href="javascript:history.back(-1)">gluttony greed sloth pride lust anger jealousy</a>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+  
+    <script type="text/javascript" src="/lib/typed/typed.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

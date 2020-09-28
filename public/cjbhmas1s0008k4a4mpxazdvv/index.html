@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="JavaScript中获取多个相同name的Input标签的值"/>
+
+
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="s0ok">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/cjbhmas1s0008k4a4mpxazdvv/"/>
+
+
+<meta name="description" content="当遇到Input标签，用Jquery取值是非常方便的，如：   12345&amp;lt;input type=&quot;text&quot; name=&quot;test&quot; value=&quot;test&quot; /&amp;gt;&amp;lt;script&amp;gt;var test = $(&quot;input[name=&apos;test&apos;]&quot;).val();&amp;lt;/script&amp;gt;   当有多个相同的name标签的时候，怎么取值呢？">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript中获取多个相同name的Input标签的值">
+<meta property="og:url" content="http://yoursite.com/cjbhmas1s0008k4a4mpxazdvv/index.html">
+<meta property="og:site_name" content="s0ok">
+<meta property="og:description" content="当遇到Input标签，用Jquery取值是非常方便的，如：   12345&amp;lt;input type=&quot;text&quot; name=&quot;test&quot; value=&quot;test&quot; /&amp;gt;&amp;lt;script&amp;gt;var test = $(&quot;input[name=&apos;test&apos;]&quot;).val();&amp;lt;/script&amp;gt;   当有多个相同的name标签的时候，怎么取值呢？">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-15T15:29:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript中获取多个相同name的Input标签的值">
+<meta name="twitter:description" content="当遇到Input标签，用Jquery取值是非常方便的，如：   12345&amp;lt;input type=&quot;text&quot; name=&quot;test&quot; value=&quot;test&quot; /&amp;gt;&amp;lt;script&amp;gt;var test = $(&quot;input[name=&apos;test&apos;]&quot;).val();&amp;lt;/script&amp;gt;   当有多个相同的name标签的时候，怎么取值呢？">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css" />
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> JavaScript中获取多个相同name的Input标签的值 - s0ok </title>
+  </head>
+
+  <body>
+    <div id="page">
+      
+      <section id="post-header">&nbsp;</section>
+      <section id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          JavaScript中获取多个相同name的Input标签的值
+        
+      </h1>
+
+      <time class="post-time">
+          2017-07-15
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>当遇到Input标签，用Jquery取值是非常方便的，如：  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;input type=<span class="string">"text"</span> name=<span class="string">"test"</span> value=<span class="string">"test"</span> /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line"><span class="keyword">var</span> test = $(<span class="string">"input[name='test']"</span>).val();</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>  
+<p>当有多个相同的name标签的时候，怎么取值呢？<br><a id="more"></a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"test"</span> <span class="attr">value</span>=<span class="string">"test1"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"test"</span> <span class="attr">value</span>=<span class="string">"test2"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"test"</span> <span class="attr">value</span>=<span class="string">"test3"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"test"</span> <span class="attr">value</span>=<span class="string">"test4"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"test"</span> <span class="attr">value</span>=<span class="string">"test5"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>  
+<p>面对这种情况的时候，取input标签的值应用下方法：  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">  &lt;input type=<span class="string">"text"</span> name=<span class="string">"test[]"</span> value=<span class="string">"test1"</span> /&gt;</div><div class="line">  &lt;input type=<span class="string">"text"</span> name=<span class="string">"test[]"</span> value=<span class="string">"test2"</span> /&gt;</div><div class="line">  &lt;input type=<span class="string">"text"</span> name=<span class="string">"test[]"</span> value=<span class="string">"test3"</span> /&gt;</div><div class="line">  &lt;input type=<span class="string">"text"</span> name=<span class="string">"test[]"</span> value=<span class="string">"test4"</span> /&gt;</div><div class="line">  &lt;input type=<span class="string">"text"</span> name=<span class="string">"test[]"</span> value=<span class="string">"test5"</span> /&gt;</div><div class="line">&lt;<span class="regexp">/body&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">&lt;script&gt;</span></div><div class="line"><span class="regexp">  $('#save-project').click(function () &#123;</span></div><div class="line"><span class="regexp">    var data_array = &#123;&#125;;</span></div><div class="line"><span class="regexp">    $("input[name='test[]']").each(function(i)&#123;</span></div><div class="line"><span class="regexp">        data_array[i] = $(this).val(); /</span><span class="regexp">/这里的value就是每一个input的value值~</span></div><div class="line"><span class="regexp">    &#125;);</span></div><div class="line"><span class="regexp">    console.log(data_array);</span></div><div class="line"><span class="regexp">&#125;);</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">&lt;/</span>script&gt;</div></pre></td></tr></table></figure>  
+<p>这样子，最后就可将input的值填入到数组中。</p>
+
+            </div>
+          
+  </article>
+
+    </div>
+
+      </section>
+
+      <footer id="colophon"><span class="copyright-year">
+    <a class="theme-link" href="javascript:history.back(-1)">gluttony greed sloth pride lust anger jealousy</a>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+  
+    <script type="text/javascript" src="/lib/typed/typed.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

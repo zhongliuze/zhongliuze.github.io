@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="微信小程序wx.request方法后台服务端无法获取传递数据"/>
+
+
+
+
+  <meta name="keywords" content="小程序,bug," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="s0ok">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/cjbhmas29001dk4a4syd5xlru/"/>
+
+
+<meta name="description" content="在微信小程序中向服务器发起请求传递数据时候，使用的是wx.request接口，接口的主要参数有：    url：开发者服务器接口地址   data：请求的参数   header：设置请求的 header , header 中不能设置 Referer   method：默认为 GET，有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT">
+<meta name="keywords" content="小程序,bug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序wx.request方法后台服务端无法获取传递数据">
+<meta property="og:url" content="http://yoursite.com/cjbhmas29001dk4a4syd5xlru/index.html">
+<meta property="og:site_name" content="s0ok">
+<meta property="og:description" content="在微信小程序中向服务器发起请求传递数据时候，使用的是wx.request接口，接口的主要参数有：    url：开发者服务器接口地址   data：请求的参数   header：设置请求的 header , header 中不能设置 Referer   method：默认为 GET，有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-08T08:29:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序wx.request方法后台服务端无法获取传递数据">
+<meta name="twitter:description" content="在微信小程序中向服务器发起请求传递数据时候，使用的是wx.request接口，接口的主要参数有：    url：开发者服务器接口地址   data：请求的参数   header：设置请求的 header , header 中不能设置 Referer   method：默认为 GET，有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css" />
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 微信小程序wx.request方法后台服务端无法获取传递数据 - s0ok </title>
+  </head>
+
+  <body>
+    <div id="page">
+      
+      <section id="post-header">&nbsp;</section>
+      <section id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          微信小程序wx.request方法后台服务端无法获取传递数据
+        
+      </h1>
+
+      <time class="post-time">
+          2017-07-08
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>在微信小程序中向服务器发起请求传递数据时候，使用的是wx.request接口，接口的主要参数有：  </p>
+<ul>
+<li><strong>url</strong>：开发者服务器接口地址  </li>
+<li><strong>data</strong>：请求的参数  </li>
+<li><strong>header</strong>：设置请求的 header , header 中不能设置 Referer  </li>
+<li><strong>method</strong>：默认为 GET，有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  </li>
+<li><strong>dataType</strong>：默认为 json。如果设置了 dataType 为 json，则会尝试对响应的数据做一次 JSON.parse  </li>
+<li><strong>success</strong>：收到开发者服务成功返回的回调函数，res = {data: ‘开发者服务器返回的内容’}  <a id="more"></a>
+</li>
+</ul>
+<p>老夫在实际使用的时候，用的如下代码：  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">wx.request(&#123;</div><div class="line">  url: <span class="string">'test.php'</span>, <span class="comment">//仅为示例，并非真实的接口地址</span></div><div class="line">  data: &#123;</div><div class="line">     x: <span class="string">''</span> ,</div><div class="line">     y: <span class="string">''</span></div><div class="line">  &#125;,</div><div class="line">  header: &#123;</div><div class="line">      <span class="string">'content-type'</span>: <span class="string">'application/json'</span></div><div class="line">  &#125;,</div><div class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(res.data)</div><div class="line">  &#125;</div><div class="line">&#125;)  </div></pre></td></tr></table></figure>  
+<p>小程序端request成功，服务端是php脚本，并且服务端可以通过ajaxReturn方法成功返回数据，但data中的数据服务端始终获取不到。仔细看开发文档后发现，method参数默认是GET，而后台取的是POST的数据，当然取不到。修改代码：  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">wx.request(&#123;</div><div class="line">  url: <span class="string">'test.php'</span>, <span class="comment">//仅为示例，并非真实的接口地址</span></div><div class="line">  data: &#123;</div><div class="line">     x: <span class="string">''</span> ,</div><div class="line">     y: <span class="string">''</span></div><div class="line">  &#125;,</div><div class="line">  header: &#123;</div><div class="line">      <span class="string">'content-type'</span>: <span class="string">'application/json'</span></div><div class="line">  &#125;,</div><div class="line">  method:<span class="string">'POST'</span>,</div><div class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(res.data)</div><div class="line">  &#125;</div><div class="line">&#125;)  </div></pre></td></tr></table></figure>  
+<p>修改后发现，还是不行，不管是取POST还是REQUEST中的数据，均为空。再次打开<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html#wxrequestobject" target="_blank" rel="external">官方文档</a>查看，发现一段文字：  </p>
+<blockquote>
+<p>data 数据说明 最终发送给服务器的数据是 String 类型，如果传入的 data 不是 String 类型，会被转换成 String 。转换规则如下：</p>
+<ul>
+<li><p>对于 header[‘content-type’] 为 ‘application/json’ 的数据，会对数据进行 JSON 序列化</p>
+</li>
+<li><p>对于 header[‘content-type’] 为 ‘application/x-www-form-urlencoded’ 的数据，会将数据转换成 query string</p>
+</li>
+</ul>
+</blockquote>
+<p>而content-type属性默认为 <code>application/json</code>。虽然我不懂这是什么屌意思，但是我把 <code>application/json</code> 改为 <code>application/x-www-form-urlencoded</code> 之后，就可以成功获取小程序传递过来的数据啦~修改后的代码：  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">wx.request(&#123;</div><div class="line">  url: <span class="string">'test.php'</span>, <span class="comment">//仅为示例，并非真实的接口地址</span></div><div class="line">  data: &#123;</div><div class="line">     x: <span class="string">''</span> ,</div><div class="line">     y: <span class="string">''</span></div><div class="line">  &#125;,</div><div class="line">  header: &#123;</div><div class="line">      <span class="string">'content-type'</span>: <span class="string">'application/x-www-form-urlencoded'</span></div><div class="line">  &#125;,</div><div class="line">  method:<span class="string">'POST'</span>,</div><div class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(res.data)</div><div class="line">  &#125;</div><div class="line">&#125;)  </div></pre></td></tr></table></figure>  
+<p>一经修改，立马奏效~  </p>
+<p>老夫告辞！</p>
+
+            </div>
+          
+  </article>
+
+    </div>
+
+      </section>
+
+      <footer id="colophon"><span class="copyright-year">
+    <a class="theme-link" href="javascript:history.back(-1)">gluttony greed sloth pride lust anger jealousy</a>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+  
+    <script type="text/javascript" src="/lib/typed/typed.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>

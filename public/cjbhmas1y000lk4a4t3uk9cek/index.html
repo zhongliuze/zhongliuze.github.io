@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="MySQL插入Emoji表情报错"/>
+
+
+
+
+  <meta name="keywords" content="macos,phpstrom,emoji,mysql," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="s0ok">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/cjbhmas1y000lk4a4t3uk9cek/"/>
+
+
+<meta name="description" content="在做微信小程序的开发的时候，用户授权登陆后我将用户信息写入数据库，在写入过程中偶尔会出现写入失败的错误。经过查找，发现某一些用户的昵称带表情比如“liuzezhong😎”这种带Emoji或Apple系统自带表情都会报错，错误信息如下：    Incorrect string value: ‘\xF0\x9F…’ for column ‘XXX’ at row 1  这个问题，原因是UTF-8编码">
+<meta name="keywords" content="macos,phpstrom,emoji,mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL插入Emoji表情报错">
+<meta property="og:url" content="http://yoursite.com/cjbhmas1y000lk4a4t3uk9cek/index.html">
+<meta property="og:site_name" content="s0ok">
+<meta property="og:description" content="在做微信小程序的开发的时候，用户授权登陆后我将用户信息写入数据库，在写入过程中偶尔会出现写入失败的错误。经过查找，发现某一些用户的昵称带表情比如“liuzezhong😎”这种带Emoji或Apple系统自带表情都会报错，错误信息如下：    Incorrect string value: ‘\xF0\x9F…’ for column ‘XXX’ at row 1  这个问题，原因是UTF-8编码">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-30T05:28:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL插入Emoji表情报错">
+<meta name="twitter:description" content="在做微信小程序的开发的时候，用户授权登陆后我将用户信息写入数据库，在写入过程中偶尔会出现写入失败的错误。经过查找，发现某一些用户的昵称带表情比如“liuzezhong😎”这种带Emoji或Apple系统自带表情都会报错，错误信息如下：    Incorrect string value: ‘\xF0\x9F…’ for column ‘XXX’ at row 1  这个问题，原因是UTF-8编码">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css" />
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> MySQL插入Emoji表情报错 - s0ok </title>
+  </head>
+
+  <body>
+    <div id="page">
+      
+      <section id="post-header">&nbsp;</section>
+      <section id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          MySQL插入Emoji表情报错
+        
+      </h1>
+
+      <time class="post-time">
+          2017-08-30
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>在做微信小程序的开发的时候，用户授权登陆后我将用户信息写入数据库，在写入过程中偶尔会出现写入失败的错误。经过查找，发现某一些用户的昵称带表情比如“liuzezhong😎”这种带Emoji或Apple系统自带表情都会报错，错误信息如下：  </p>
+<blockquote>
+<p>Incorrect string value: ‘\xF0\x9F…’ for column ‘XXX’ at row 1</p>
+</blockquote>
+<p>这个问题，原因是UTF-8编码有可能是两个、三个、四个字节。Emoji表情或者某些特殊字符是4个字节，而MySQL的utf8编码最多3个字节，所以数据插不进去。  <a id="more"></a></p>
+<p>我的解决方案：  </p>
+<h4 id="在MySQL安装目录找到配置文件"><a href="#在MySQL安装目录找到配置文件" class="headerlink" title="在MySQL安装目录找到配置文件"></a>在MySQL安装目录找到配置文件</h4><p>在windows平台MySQL的配置文件是my.ini,在macOS平台MySQL的配置文件时是my.cnf。  </p>
+<p>my.cnf的路径是 <code>/etc/my.cnf</code> 。  </p>
+<p>如果此路径下没有my.cnf的话，在 <code>/usr/local/mysql/support-files</code> 下有一个my-default.cnf，只要把这个文件复制到/etc/下，再改名成my.cnf就好了。  </p>
+<p>在MySQL5.7中,MacOS下默认没有my.cnf文件，哪怕是上述路径中也不存在my-default.cnf。  </p>
+<p>那我们直接在/etc目录下新建my.cnf即可。  </p>
+<p>在my.ini或my.cnf中修改或追加如下代码：  </p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line">character-<span class="built_in">set</span>-server=utf8mb4</div><div class="line"> </div><div class="line">[client]</div><div class="line">default-character-<span class="built_in">set</span>=utf8mb4</div><div class="line"> </div><div class="line">[mysql]</div><div class="line">default-character-<span class="built_in">set</span>=utf8mb4</div></pre></td></tr></table></figure>  
+<p>修改完成后，重启MySQL服务器。  </p>
+<p>可执行SQL语句查看修改后的编码格式  </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%character%'</span>;</div></pre></td></tr></table></figure>  
+<h4 id="将已经建好的表也转换成utf8mb4"><a href="#将已经建好的表也转换成utf8mb4" class="headerlink" title="将已经建好的表也转换成utf8mb4"></a>将已经建好的表也转换成utf8mb4</h4><p>执行sql语句更改数据库编码<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> DATABASE_NAME <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci;</div><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> TABLE_NAME <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8mb4 <span class="keyword">collate</span> utf8mb4_bin; </div></pre></td></tr></table></figure>  </p>
+<p><em>参考文章：<a href="http://blog.csdn.NET/likendsl/article/details/7530979" target="_blank" rel="external">http://blog.csdn.NET/likendsl/article/details/7530979</a> </em></p>
+
+            </div>
+          
+  </article>
+
+    </div>
+
+      </section>
+
+      <footer id="colophon"><span class="copyright-year">
+    <a class="theme-link" href="javascript:history.back(-1)">gluttony greed sloth pride lust anger jealousy</a>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+  
+    <script type="text/javascript" src="/lib/typed/typed.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
